@@ -1,6 +1,10 @@
-import express from "express";
+import express, { Router } from "express";
+import bodyParser from "body-parser";
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./swagger";
+import cors from "cors";
+import dotenv from "dotenv";
+
 import { authenticateJWT } from "./authMiddleware";
 
 import userRoutes from "./routes/userRoutes";
@@ -9,20 +13,23 @@ import orderRoutes from "./routes/orderRoutes";
 
 const app = express();
 const port = 3000;
+app.use(bodyParser.json());
+app.use(cors());
+dotenv.config();
 
 // adiciona middleware para o swagger
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Main router
-const router = express.Router();
-
-// JWT authentication middleware
-router.use(authenticateJWT);
+const router: Router = express.Router();
 
 // Use the main router for all routes
 router.use("/api", userRoutes);
 router.use("/api", pizzaRoutes);
 router.use("/api", orderRoutes);
+
+// JWT authentication middleware
+router.use(authenticateJWT);
 
 app.use(router);
 

@@ -1,4 +1,3 @@
-// src/controllers/UserController.ts
 import { Request, Response } from "express";
 import { query } from "../utils/db";
 import { User } from "../models/User";

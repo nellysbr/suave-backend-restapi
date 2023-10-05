@@ -2,8 +2,6 @@ import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import { query } from "../utils/db";
 
-const SECRET_KEY = process.env.TOKEN_SECRET_KEY as string;
-
 export const loginUser = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
@@ -27,7 +25,7 @@ export const loginUser = async (req: Request, res: Response) => {
     // Generate a JWT token
     const token = jwt.sign(
       { id: firstUser.id, email: firstUser.email },
-      SECRET_KEY
+      process.env.NODE_ENV_TOKEN_SECRET_KEY as string
     );
 
     res.json({ token });
