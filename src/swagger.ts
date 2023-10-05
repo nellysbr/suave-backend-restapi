@@ -1,4 +1,3 @@
-// src/swagger.ts
 import swaggerJSDoc from "swagger-jsdoc";
 
 const options = {
@@ -10,7 +9,7 @@ const options = {
       description: "Description of your API",
     },
   },
-  apis: ["./src/**/*.ts"], // Path to your API files
+  apis: ["./src/**/*.ts"], // Path API files
 };
 
 const swaggerSpec = swaggerJSDoc(options);

@@ -21,7 +21,7 @@ export const getOrderById = async (req: Request, res: Response) => {
     ])) as Order | undefined;
 
     if (!order) {
-      return res.status(404).json({ message: "Order not found" });
+      return res.status(404).json({ message: "Pedido não encontrado" });
     }
 
     res.json(order);
@@ -42,7 +42,7 @@ export const createOrder = async (req: Request, res: Response) => {
     )) as { insertId?: number };
 
     if (result.insertId === undefined) {
-      return res.status(500).json({ message: "Failed to create order" });
+      return res.status(500).json({ message: "Falha ao criar pedido" });
     }
 
     const insertedOrderId = result.insertId;
@@ -72,12 +72,12 @@ export const deleteOrderById = async (req: Request, res: Response) => {
     ])) as Order | undefined;
 
     if (!existingOrder) {
-      return res.status(404).json({ message: "Order not found" });
+      return res.status(404).json({ message: "Pedido não encontrado" });
     }
 
     await query("DELETE FROM orders WHERE id = ?", [orderId]);
 
-    res.status(200).json({ message: "Order deleted successfully" });
+    res.status(200).json({ message: "Pedido deletado com sucesso" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal Server Error" });

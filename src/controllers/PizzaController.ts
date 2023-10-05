@@ -20,7 +20,7 @@ export const getPizzaById = async (req: Request, res: Response) => {
     ])) as Pizza | undefined;
 
     if (!pizza) {
-      return res.status(404).json({ message: "Pizza Não encontrada" });
+      return res.status(404).json({ message: "Pizza não encontrada" });
     }
 
     res.json(pizza);

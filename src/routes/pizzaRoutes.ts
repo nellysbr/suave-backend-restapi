@@ -1,4 +1,3 @@
-// src/routes/pizzaRoutes.ts
 import express from "express";
 import {
   createPizza,

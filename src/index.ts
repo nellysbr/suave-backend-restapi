@@ -1,4 +1,3 @@
-// src/index.ts
 import express from "express";
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./swagger";
@@ -25,7 +24,6 @@ router.use("/api", userRoutes);
 router.use("/api", pizzaRoutes);
 router.use("/api", orderRoutes);
 
-// Use the main router for all other routes
 app.use(router);
 
 app.get("/", (req, res) => {

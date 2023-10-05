@@ -1,4 +1,3 @@
-// src/express.d.ts
 import "express";
 import { JwtPayload } from "jsonwebtoken";
 
