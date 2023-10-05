@@ -1,0 +1,23 @@
+{
+  "name": "suave-backend-restapi",
+  "version": "1.0.0",
+  "description": "desenvolvido para teste basico de skills",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/index.ts",
+    "build": "tsc"
+  },
+  "author": "Nelson Mello",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.8.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.18",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.1"
+  }
+}
