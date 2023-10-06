@@ -1,3 +1,4 @@
+// src/index.ts
 import express, { Router } from "express";
 import bodyParser from "body-parser";
 import swaggerUi from "swagger-ui-express";
@@ -20,6 +21,9 @@ dotenv.config();
 // adiciona middleware para o swagger
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+// JWT authentication middleware
+app.use(authenticateJWT);
+
 // Main router
 const router: Router = express.Router();
 
@@ -27,9 +31,6 @@ const router: Router = express.Router();
 router.use("/api", userRoutes);
 router.use("/api", pizzaRoutes);
 router.use("/api", orderRoutes);
-
-// JWT authentication middleware
-router.use(authenticateJWT);
 
 app.use(router);
 

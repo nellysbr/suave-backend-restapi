@@ -1,3 +1,4 @@
+// src/controllers/UserController.ts
 import { Request, Response } from "express";
 import { query } from "../utils/db";
 import { User } from "../models/User";
@@ -56,6 +57,7 @@ export const createUser = async (req: Request, res: Response) => {
       password,
       address,
       phone,
+      role: "customer", // Default role for a new user
     };
 
     res.status(201).json(newUser);

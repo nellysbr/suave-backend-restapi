@@ -1,11 +1,16 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import { createUser, getUsers } from "../controllers/UserController";
 import { loginUser } from "../controllers/AuthController";
+import { authenticateJWT } from "../authMiddleware";
 
 const router = express.Router();
 
 router.post("/users", createUser);
-router.get("/users", getUsers);
+
+// Rota para login
 router.post("/login", loginUser);
+
+// Somente administradores podem listar todos os usuários
+router.get("/users", authenticateJWT, getUsers);
 
 export default router;

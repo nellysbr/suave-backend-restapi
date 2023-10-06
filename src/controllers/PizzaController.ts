@@ -1,3 +1,4 @@
+// src/controllers/pizzaController.ts
 import { Request, Response } from "express";
 import { query } from "../utils/db";
 import { Pizza } from "../models/Pizza";
@@ -11,6 +12,7 @@ export const getPizzas = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
 export const getPizzaById = async (req: Request, res: Response) => {
   const pizzaId = req.params.id;
 

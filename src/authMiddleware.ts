@@ -1,13 +1,15 @@
+// authMiddleware.ts
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
-interface User {
+interface AuthenticatedUser {
   id: string;
-  username: string;
+  email: string;
+  role: "admin" | "customer";
 }
 
 export const authenticateJWT = (
-  req: Request & { user?: User },
+  req: Request & { user?: AuthenticatedUser },
   res: Response,
   next: NextFunction
 ) => {
@@ -21,7 +23,7 @@ export const authenticateJWT = (
     (err, user) => {
       if (err) return res.status(403).json({ message: "Forbidden" });
 
-      req.user = user as User;
+      req.user = user as AuthenticatedUser;
       next();
     }
   );
